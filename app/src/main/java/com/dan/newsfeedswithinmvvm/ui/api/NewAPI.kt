@@ -1,6 +1,6 @@
 package com.dan.newsfeedswithinmvvm.ui.api
 
-import com.dan.newsfeedswithinmvvm.ui.NewsResponse
+import com.dan.newsfeedswithinmvvm.ui.models.NewsResponse
 import com.dan.newsfeedswithinmvvm.ui.util.AppConstants
 import retrofit2.Response
 import retrofit2.http.GET

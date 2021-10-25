@@ -1,4 +1,4 @@
-package com.dan.newsfeedswithinmvvm.ui
+package com.dan.newsfeedswithinmvvm.ui.models
 
 data class Source(
     val id: String,

@@ -2,7 +2,7 @@ package com.dan.newsfeedswithinmvvm.ui.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.dan.newsfeedswithinmvvm.ui.Article
+import com.dan.newsfeedswithinmvvm.ui.models.Article
 
 /**
  * Created by Dan Kim

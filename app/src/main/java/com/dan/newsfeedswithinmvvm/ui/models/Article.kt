@@ -1,4 +1,4 @@
-package com.dan.newsfeedswithinmvvm.ui
+package com.dan.newsfeedswithinmvvm.ui.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

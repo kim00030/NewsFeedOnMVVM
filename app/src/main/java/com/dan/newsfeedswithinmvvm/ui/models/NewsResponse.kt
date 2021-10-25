@@ -1,4 +1,4 @@
-package com.dan.newsfeedswithinmvvm.ui
+package com.dan.newsfeedswithinmvvm.ui.models
 
 data class NewsResponse(
     val articles: List<Article>,
