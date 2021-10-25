@@ -7,10 +7,17 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.dan.newsfeedswithinmvvm.R
 import com.dan.newsfeedswithinmvvm.databinding.ActivityNewsBinding
+import com.dan.newsfeedswithinmvvm.ui.util.NewsViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class NewsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNewsBinding
+
+    @Inject
+    lateinit var viewModel: NewsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
