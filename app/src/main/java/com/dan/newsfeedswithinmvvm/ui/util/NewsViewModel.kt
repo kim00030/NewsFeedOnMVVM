@@ -17,7 +17,10 @@ class NewsViewModel @Inject constructor(
 ) : ViewModel() {
 
     val breakingNewsLiveData: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
-    var breakingNewsPage = 1
+    private var breakingNewsPage = 1
+
+    val searchNewsLiveData: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
+    private var searchNewsPage = 1
 
     init {
         getBreakingNews("us")
@@ -30,11 +33,30 @@ class NewsViewModel @Inject constructor(
         val response =
             newsRepository.getBreakingNews(countryCode = countryCode, pageNumber = breakingNewsPage)
 
-        breakingNewsLiveData.postValue(handleBreakingNewsResponse(response))
+        if (response != null) {
+            breakingNewsLiveData.postValue(handleBreakingNewsResponse(response))
+        }
     }
 
     private fun handleBreakingNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse> {
 
+        if (response.isSuccessful) {
+            response.body()?.let { result ->
+                return Resource.Success(result)
+            }
+        }
+        return Resource.Error(null, response.message())
+    }
+
+    fun searchNews(searchQuery: String) = viewModelScope.launch {
+        searchNewsLiveData.postValue(Resource.Loading())
+        val response = newsRepository.searchNews(searchQuery = searchQuery, searchNewsPage)
+        if (response != null) {
+            searchNewsLiveData.postValue(handleSearchNewsResponse(response))
+        }
+    }
+
+    private fun handleSearchNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse> {
         if (response.isSuccessful) {
             response.body()?.let { result ->
                 return Resource.Success(result)
