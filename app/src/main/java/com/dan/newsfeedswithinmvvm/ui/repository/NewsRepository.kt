@@ -1,5 +1,6 @@
 package com.dan.newsfeedswithinmvvm.ui.repository
 
+import com.dan.newsfeedswithinmvvm.ui.api.RetrofitInstance
 import com.dan.newsfeedswithinmvvm.ui.db.ArticleDatabase
 
 /**
@@ -8,4 +9,11 @@ import com.dan.newsfeedswithinmvvm.ui.db.ArticleDatabase
 class NewsRepository(
     private val db: ArticleDatabase
 ) {
+
+    suspend fun getBreakingNews(countryCode: String, pageNumber: Int) =
+        RetrofitInstance.api.getBreakingNews(
+            countryCode = countryCode,
+            pageNumber = pageNumber
+        )
+
 }
