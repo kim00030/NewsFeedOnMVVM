@@ -10,5 +10,6 @@ class AppConstants {
         const val BASE_URL: String = "https://newsapi.org"
         const val DEBUG_TAG: String = "myDebug"
         const val SEARCH_TIME_DELAY: Long = 500L
+        const val ARTICLE: String = "article"
     }
 }
