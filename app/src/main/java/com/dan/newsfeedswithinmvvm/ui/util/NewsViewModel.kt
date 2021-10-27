@@ -3,6 +3,7 @@ package com.dan.newsfeedswithinmvvm.ui.util
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dan.newsfeedswithinmvvm.ui.models.Article
 import com.dan.newsfeedswithinmvvm.ui.models.NewsResponse
 import com.dan.newsfeedswithinmvvm.ui.repository.NewsRepository
 import kotlinx.coroutines.launch
@@ -65,4 +66,13 @@ class NewsViewModel @Inject constructor(
         return Resource.Error(null, response.message())
     }
 
+    fun saveArticle(article: Article) = viewModelScope.launch {
+        newsRepository.upsert(article)
+    }
+
+    fun getSavedNews() = newsRepository.getSavedNews()
+
+    fun deleteArticle(article: Article) = viewModelScope.launch {
+        newsRepository.deleteArticle(article)
+    }
 }

@@ -2,6 +2,7 @@ package com.dan.newsfeedswithinmvvm.ui.repository
 
 import com.dan.newsfeedswithinmvvm.ui.api.RetrofitInstance
 import com.dan.newsfeedswithinmvvm.ui.db.ArticleDatabase
+import com.dan.newsfeedswithinmvvm.ui.models.Article
 
 /**
  * Created by Dan Kim
@@ -22,4 +23,11 @@ class NewsRepository(
             pageNumber = pageNumber
         )
 
+    suspend fun upsert(article: Article) {
+        db.getArticleDao().upsert(article)
+    }
+
+    fun getSavedNews() = db.getArticleDao().getAllArticles()
+
+    suspend fun deleteArticle(article: Article) = db.getArticleDao().deleteArticle(article)
 }

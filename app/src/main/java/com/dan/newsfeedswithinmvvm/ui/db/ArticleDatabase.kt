@@ -1,8 +1,6 @@
 package com.dan.newsfeedswithinmvvm.ui.db
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.dan.newsfeedswithinmvvm.ui.models.Article
@@ -10,16 +8,18 @@ import com.dan.newsfeedswithinmvvm.ui.models.Article
 /**
  * Created by Dan Kim
  */
-@Database(entities = [Article::class], version = 1)
+@Database(entities = [Article::class], version = 2)
 @TypeConverters(Converters::class)
 abstract class ArticleDatabase : RoomDatabase() {
 
     abstract fun getArticleDao(): ArticleDao
 
     companion object {
-        val DATABASE_NAME: String = "article_db.db"
+        const val DATABASE_NAME: String = "article_db.db"
 
     }
+
+    //Room DB is defined as Hilt injection module
 
 //    companion object {
 //

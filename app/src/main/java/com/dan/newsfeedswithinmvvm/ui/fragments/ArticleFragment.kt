@@ -10,12 +10,14 @@ import androidx.navigation.fragment.navArgs
 import com.dan.newsfeedswithinmvvm.R
 import com.dan.newsfeedswithinmvvm.databinding.FragmentArticleBinding
 import com.dan.newsfeedswithinmvvm.ui.util.NewsViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 /**
  * Created by Dan Kim
  */
+@AndroidEntryPoint
 class ArticleFragment : Fragment(R.layout.fragment_article) {
 
     @Inject
@@ -40,6 +42,12 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         binding?.webView?.apply {
             webViewClient = WebViewClient()
             loadUrl(article.url)
+        }
+
+        binding?.fab?.setOnClickListener {
+            viewModel.saveArticle(article)
+            Snackbar.make(view, "Article saved successfully", Snackbar.LENGTH_SHORT)
+                .show()
         }
     }
 
