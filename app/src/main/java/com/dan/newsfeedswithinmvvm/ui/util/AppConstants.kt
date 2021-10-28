@@ -11,5 +11,7 @@ class AppConstants {
         const val DEBUG_TAG: String = "myDebug"
         const val SEARCH_TIME_DELAY: Long = 500L
         const val ARTICLE: String = "article"
+        const val QUERY_PAGE_SIZE: Int = 20
+        const val DEFAULT_COUNTRY_CODE:String = "us"
     }
 }

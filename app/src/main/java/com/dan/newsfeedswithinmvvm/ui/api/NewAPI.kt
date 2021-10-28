@@ -14,7 +14,7 @@ interface NewAPI {
 
     @GET("v2/top-headlines")
     suspend fun getBreakingNews(
-        @Query("country") countryCode: String = "us",
+        @Query("country") countryCode: String = AppConstants.DEFAULT_COUNTRY_CODE,
         @Query("page") pageNumber: Int = 1,
         @Query("apikey") apiKey: String = AppConstants.API_KEY
     ): Response<NewsResponse>
