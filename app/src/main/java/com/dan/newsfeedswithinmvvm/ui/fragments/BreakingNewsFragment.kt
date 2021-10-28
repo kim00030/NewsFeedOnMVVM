@@ -1,7 +1,6 @@
 package com.dan.newsfeedswithinmvvm.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +15,7 @@ import com.dan.newsfeedswithinmvvm.ui.adapters.NewsAdapter
 import com.dan.newsfeedswithinmvvm.ui.util.AppConstants
 import com.dan.newsfeedswithinmvvm.ui.util.NewsViewModel
 import com.dan.newsfeedswithinmvvm.ui.util.Resource
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -73,7 +73,8 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.data?.let { it ->
-                        Log.e(AppConstants.DEBUG_TAG, "An error occured: $it")
+                        val msg = "An error occured: $it"
+                        Snackbar.make(view, msg, Snackbar.LENGTH_SHORT).show()
                     }
                 }
                 is Resource.Loading -> {

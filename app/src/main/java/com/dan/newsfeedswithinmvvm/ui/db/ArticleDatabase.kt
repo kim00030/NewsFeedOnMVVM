@@ -8,7 +8,7 @@ import com.dan.newsfeedswithinmvvm.ui.models.Article
 /**
  * Created by Dan Kim
  */
-@Database(entities = [Article::class], version = 2)
+@Database(entities = [Article::class], version = 3)
 @TypeConverters(Converters::class)
 abstract class ArticleDatabase : RoomDatabase() {
 
